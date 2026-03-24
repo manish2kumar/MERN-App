@@ -1,0 +1,328 @@
+/* ============================================
+   AI Flow Visualizer — Algorithmic Noir (WQF Inspired)
+   Ultra-Premium Global Design System
+   ============================================ */
+
+/* Inter Font for that strict algorithmic, quant feel */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Colors - Pure Black & Neon */
+  --noir-bg: #000000;
+  --noir-surface: #090a0f;
+  --noir-elevated: #11131c;
+  
+  --neon-cyan: #00d2ff;
+  --neon-emerald: #00ff9d;
+  --on-neon: #000000;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #8a94a6;
+  --text-tertiary: #4a5468;
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-cyan: rgba(0, 210, 255, 0.3);
+  --glow-cyan: rgba(0, 210, 255, 0.15);
+  --glow-emerald: rgba(0, 255, 157, 0.15);
+
+  /* Typography */
+  --font-quant: 'Inter', sans-serif;
+  
+  /* Radii - Sharp and precise */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  
+  /* Animation */
+  --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --perspective: 1200px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-quant);
+  background-color: var(--noir-bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+/* 3D Atmospheric Background Grid */
+.bg-algorithmic-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(var(--perspective)) rotateX(50deg) scale(2);
+  transform-origin: top center;
+  mask-image: radial-gradient(circle at center 30%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center 30%, black 20%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: gridFloat 20s linear infinite;
+}
+
+@keyframes gridFloat {
+  0% { transform: perspective(var(--perspective)) rotateX(50deg) scale(2) translateY(0); }
+  100% { transform: perspective(var(--perspective)) rotateX(50deg) scale(2) translateY(60px); }
+}
+
+/* Premium Glass & Surface */
+.surface-noir {
+  background: rgba(9, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+}
+
+/* Reactive Glowing Buttons (WQF Style) */
+.btn-quant {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+  text-decoration: none;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-quant::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--neon-cyan);
+  z-index: -1;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-quant:hover {
+  border-color: var(--neon-cyan);
+  color: var(--on-neon);
+  box-shadow: 0 0 20px var(--glow-cyan), inset 0 0 10px var(--glow-cyan);
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.btn-quant:hover::before {
+  transform: scaleY(1);
+}
+
+.btn-quant:active {
+  transform: scale(0.98);
+}
+
+/* Emerald Variant */
+.btn-quant.emerald::before { background: var(--neon-emerald); border-color: var(--neon-emerald); }
+.btn-quant.emerald:hover { 
+  border-color: var(--neon-emerald); 
+  box-shadow: 0 0 20px var(--glow-emerald), inset 0 0 10px var(--glow-emerald); 
+}
+
+/* ── Landing Page ── */
+.landing-page {
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 200px 24px 100px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, #8a94a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Data Sphere / Abstract 3D Hero Art */
+.hero-abstract-art {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  perspective: 1500px;
+}
+
+/* ── Dashboard Layout ── */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.canvas-area {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100;
+}
+
+.app-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Quant Node Blocks ── */
+.node-quant {
+  width: 340px;
+  background: var(--noir-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+/* Cyber Left Border Glow */
+.node-quant::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -1px; bottom: 0;
+  width: 3px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.node-quant.result-variant::before {
+  background: var(--neon-emerald);
+  box-shadow: 0 0 15px var(--neon-emerald);
+}
+
+.node-quant:hover::before {
+  opacity: 1;
+}
+
+.node-quant:hover {
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.node-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+}
+
+/* Custom Scrollbar for sleekness */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--noir-bg); }
+::-webkit-scrollbar-thumb { background: var(--text-tertiary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+
+/* ── React Flow Core Overrides ── */
+.react-flow__controls-button {
+  background-color: var(--noir-surface) !important;
+  fill: var(--neon-cyan) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.react-flow__controls-button:hover {
+  background-color: var(--noir-elevated) !important;
+}
+
+.react-flow__handle {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  z-index: 100 !important;
+}
+.react-flow__handle-target {
+  left: -5px !important;
+}
+.react-flow__handle-source {
+  right: -5px !important;
+}
+
+.react-flow__panel.react-flow__attribution {
+  display: none !important;
+}
