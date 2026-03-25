@@ -150,7 +150,8 @@ function Dashboard() {
         </div>
         <div className="header-right" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           {saveStatus && <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--neon-emerald)', letterSpacing: '0.15em' }}>{saveStatus}</span>}
-          <HistoryPanel refreshFlag={historyRefresh} />
+          {/* <HistoryPanel refreshFlag={historyRefresh} /> */}
+          <HistoryPanel refreshFlag={historyRefresh} apiBaseUrl={API_BASE_URL} />
           <button className="btn-quant" onClick={handleSave}>
             <Save size={18} /> <span style={{ textTransform: 'uppercase' }}>Save</span>
           </button>
