@@ -1,4 +1,4 @@
-# AI Flow Visualizer (MERN Developer Task)
+# AI Flow Visualizer 
 
 A full-stack MERN application that empowers users to query AI language models via an interactive, node-based flow interface. Architected with React Flow, Express, MongoDB, and the OpenRouter API.
 
