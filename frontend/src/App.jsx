@@ -18,7 +18,8 @@ import HistoryPanel from './components/HistoryPanel';
 import LandingPage from './pages/LandingPage';
 import './App.css';
 
-const API_BASE_URL = 'http://127.0.0.1:5001';
+// const API_BASE_URL = 'http://127.0.0.1:5001';
+const API_BASE_URL = 'https://mern-app-37rz.onrender.com';
 
 const nodeTypes = {
   inputNode: InputNode,
